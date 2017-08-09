@@ -28,10 +28,6 @@ class Menu extends Component {
         })
   }
 
-  componentDidUpdate() {
-    this.fetchData()
-  }
-
   handleClickOutside = () => {
     this.props.closeMenu();
   }
