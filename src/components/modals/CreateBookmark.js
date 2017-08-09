@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './CreateBoookmark.css';
+import './CreateBookmark.css';
 
-export default class CreateBoookmark extends Component {
+export default class CreateBookmark extends Component {
   constructor(props) {
     super(props);
     this.state = {};

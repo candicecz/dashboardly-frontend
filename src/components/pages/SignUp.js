@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import auth from '../../auth'
 import './SignUp.css';
-import {API_HOST} from '../../config'
+import {API_HOST} from '../../config';
 
 
 // const ENTER = 13;
@@ -33,7 +33,7 @@ export default class SignUp extends Component {
         }
       })//here if you wanted you could redirect the user to being signed in by doing '/'
       .catch(
-        this.setState({error:"this is insane"})
+        this.setState({error:"Please put in a username or password"})
       )
   }
 
