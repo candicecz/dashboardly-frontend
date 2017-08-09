@@ -11,13 +11,10 @@ class Menu extends Component {
   constructor() {
     super()
     this.state= {
-      image: "profile image"
+      image: "YAP"
     }
   }
 
-  componentDidMount() {
-    this.fetchData()
-  }
 
   fetchData() {
       var url= `${API_HOST}/auth/me`
@@ -26,7 +23,7 @@ class Menu extends Component {
       .then(data =>{
           this.setState({
             image: data.avatarUrl
-            
+
           })
         })
   }
@@ -34,7 +31,6 @@ class Menu extends Component {
   componentDidUpdate() {
     this.fetchData()
   }
-  
 
   handleClickOutside = () => {
     this.props.closeMenu();
