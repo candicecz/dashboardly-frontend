@@ -11,7 +11,7 @@ class Menu extends Component {
   constructor() {
     super()
     this.state= {
-      image: "YAP"
+      image: "profile image"
     }
   }
 
@@ -35,12 +35,13 @@ class Menu extends Component {
     this.fetchData()
   }
   
+
   handleClickOutside = () => {
     this.props.closeMenu();
   }
 
   render() {
-    
+
     let { closeMenu, show } = this.props
     const isLoggedIn = auth.isLoggedIn()
     return (
