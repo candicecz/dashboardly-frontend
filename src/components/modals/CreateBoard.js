@@ -44,14 +44,14 @@ export default class CreateBoard extends Component {
   render(){
     return (
       <div className="createNewBoard">
-      <form>
-        Title: <input type="text" ref="title"/>
-        <hr/>
-        Description: <input value={this.state.inputValue} type="text" ref="description" onInput={e => this.handleInput(e)}/>
-        {this.state.inputValue.length}/80
-        <hr/>
-        <button type="submit" onClick={(e) => this._handleClick(e)}>Create</button>
-      </form>
+        <form>
+          Title: <input type="text" ref="title"/>
+          <hr/>
+          Description: <input value={this.state.inputValue} type="text" ref="description" onInput={e => this.handleInput(e)}/>
+          {this.state.inputValue.length}/80
+          <hr/>
+          <button type="submit" onClick={(e) => this._handleClick(e)}>Create</button>
+        </form>
       </div>
     );
   }

@@ -11,15 +11,12 @@ class Menu extends Component {
   constructor() {
     super()
     this.state= {
-      image: "profile image"
+      image: "YAP"
     }
   }
 
-  componentDidMount() {
-    this.fetchData()
-  }
 
-  fetchData() {
+
 
     api.getMe(localStorage.token)
     .then(response => {
@@ -29,8 +26,8 @@ class Menu extends Component {
     })
   }
 
-  
-  
+
+
 
   handleClickOutside = () => {
     this.props.closeMenu();
