@@ -4,6 +4,7 @@ import BoardCard from '../elements/BoardCard';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
+import CreateBoard from '../modals/CreateBoard.js'
 
 
 export default class Home extends Component {
@@ -27,8 +28,11 @@ export default class Home extends Component {
     .catch(console.error)
   }
 
-  _hello(){
+  _hello = () =>{
     console.log('hello')
+    this.setState({
+      createBoard: true
+    })
   }
 
   render() {
@@ -45,6 +49,7 @@ export default class Home extends Component {
           />
         )}
         {auth.isLoggedIn() ? <AddButton addButtonClick={this._hello}  /> : null}
+        {this.state.createBoard ? <CreateBoard/> : ""}
       </div>
     );
   }
