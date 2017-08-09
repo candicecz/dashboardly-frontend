@@ -11,16 +11,15 @@ class Menu extends Component {
   constructor() {
     super()
     this.state= {
-      image: "profile image"
+      image: "YAP"
     }
   }
 
-  componentDidMount() {
-    this.fetchData()
-  }
+
 
   fetchData() {
     //let's see if this works
+
     api.getMe(localStorage.token)
     .then(response => {
      this.setState({
