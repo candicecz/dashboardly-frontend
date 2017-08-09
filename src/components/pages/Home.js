@@ -27,6 +27,10 @@ export default class Home extends Component {
     .catch(console.error)
   }
 
+  _hello(){
+    console.log('hello')
+  }
+
   render() {
     let { boards } = this.state
     return (
@@ -40,7 +44,7 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton  /> : null}
+        {auth.isLoggedIn() ? <AddButton addButtonClick={this._hello}  /> : null}
       </div>
     );
   }
