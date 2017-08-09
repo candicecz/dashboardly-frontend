@@ -4,7 +4,7 @@ import onClickOutside from 'react-onclickoutside';
 import auth from '../../auth';
 import './Menu.css';
 import { API_HOST } from '../../config'
-
+import api from '../../api';
 
 
 class Menu extends Component {
@@ -16,17 +16,18 @@ class Menu extends Component {
   }
 
 
-  fetchData() {
-      var url= `${API_HOST}/auth/me`
-      fetch(url)
-      .then(response=> response.json())
-      .then(data =>{
-          this.setState({
-            image: data.avatarUrl
 
-          })
-        })
+
+    api.getMe(localStorage.token)
+    .then(response => {
+     this.setState({
+        image: response.body.avatarUrl
+      })
+    })
   }
+
+
+
 
   handleClickOutside = () => {
     this.props.closeMenu();
