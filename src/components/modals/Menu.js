@@ -26,10 +26,15 @@ class Menu extends Component {
       .then(data =>{
           this.setState({
             image: data.avatarUrl
+            
           })
         })
   }
 
+  componentDidUpdate() {
+    this.fetchData()
+  }
+  
 
   handleClickOutside = () => {
     this.props.closeMenu();
