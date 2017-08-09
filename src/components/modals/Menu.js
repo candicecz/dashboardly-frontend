@@ -17,6 +17,8 @@ class Menu extends Component {
 
 
 
+  fetchData() {
+    //let's see if this works
 
     api.getMe(localStorage.token)
     .then(response => {
