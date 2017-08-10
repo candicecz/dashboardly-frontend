@@ -5,6 +5,7 @@ import auth from '../../auth';
 import './Menu.css';
 import { API_HOST } from '../../config'
 import api from '../../api';
+import {browserHistory as history} from 'react-router';
 
 
 class Menu extends Component {
@@ -15,7 +16,7 @@ class Menu extends Component {
     }
   }
 
-  fetchData = () => {
+  _fetchData = () => {
     api.getMe(localStorage.token)
     .then(response => {
      this.setState({
@@ -25,9 +26,9 @@ class Menu extends Component {
   }
 
 
-componentDidMount(){
-  this.fetchData()
-}
+  componentDidMount(){
+    this._fetchData()
+  }
 
   handleClickOutside = () => {
     this.props.closeMenu();
@@ -37,6 +38,8 @@ componentDidMount(){
 
     let { closeMenu, show } = this.props
     const isLoggedIn = auth.isLoggedIn()
+
+
     return (
       <div className={`menu ${show?"show":""}`}>
 
@@ -66,6 +69,7 @@ componentDidMount(){
             <Link to="/logout" className="menu__item" onClick={closeMenu}>
               Logout
             </Link>
+
           : null}
         </div>
 
