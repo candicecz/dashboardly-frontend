@@ -7,10 +7,8 @@ const ENTER = 13;
 export default class Login extends Component {
 
   _handleLogin = () => {
-
     // deep destructuring equivalent to (let email = this.refs.email.value;)
     let { email: {value: email}, password: {value: password} } = this.refs;
-
     if (email && password) {
       auth.login(email, password)
       .then(res => this.props.router.push('/'))
