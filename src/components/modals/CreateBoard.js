@@ -37,7 +37,7 @@ export default class CreateBoard extends Component {
             history.push(`/boards/${res.id}`)
         })
         .catch(
-          this.setState({error:"Please put in a username or password"})
+          this.setState({error:"error"})
         )
     }
 
