@@ -28,9 +28,9 @@ export default class Board extends Component {
       ])
       .then(res => {
         this.setState({
-          title: res[0].body.title,
-          description: res[0].body.description,
-          bookmarks: res[1].body.bookmarks
+          title: res[0].body[0].title,
+          description: res[0].body[0].description,
+          bookmarks: res[1].body
         })
       })
       .catch(console.error)
@@ -43,7 +43,14 @@ export default class Board extends Component {
   }
 
   render() {
-    let { bookmarks } = this.state
+    let { bookmarks } = this.state;
+    if(!bookmarks) {
+      return (
+        <div>
+          <h1> LOADING from Boards.js </h1>
+        </div>
+      )
+    }
     return (
       <div className="board">
         { bookmarks.map(b =>

@@ -3,6 +3,14 @@ import { API_HOST } from './config'
 
 class Api {
 
+  requestSignup = (email, password) => (
+
+    superagent
+    .post(`${API_HOST}/auth/users`)
+    .send({email, password})
+  )
+
+
   requestLogin = (email, password) => (
     superagent
     .post(`${API_HOST}/auth/sessions`)

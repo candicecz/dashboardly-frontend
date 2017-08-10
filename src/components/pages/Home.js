@@ -23,7 +23,9 @@ export default class Home extends Component {
   _fetchBoards = () => {
     api.getBoardsList()
     .then(res => {
-      this.setState({ boards: res.body.boards })
+      // console.log(res, 'response')
+      // console.log(res.body[0].boards )
+      this.setState({ boards: res.body})
     })
     .catch(console.error)
   }
@@ -37,6 +39,13 @@ export default class Home extends Component {
 
   render() {
     let { boards } = this.state
+    if(!boards){
+      return (
+        <div>
+          <h1>loading...</h1>
+        </div>
+      )
+    }
     return (
       <div className="home">
         { boards.map(b =>  //iterating over each board so that the following is displayed
