@@ -4,6 +4,7 @@ import BookmarkCard from '../elements/BookmarkCard';
 import auth from '../../auth';
 import './Board.css';
 import AddButton from '../elements/AddButton';
+import CreateBookmark from '../modals/CreateBookmark'
 
 export default class Board extends Component {
   constructor(props) {
@@ -15,18 +16,16 @@ export default class Board extends Component {
       updatedAt: ""
     };
   }
-  
+
   componentDidMount() {
     this.fetchBoardData()
   }
-  
+
   fetchBoardData = () => {
-    
       Promise.all([
         api.getBoard(this.props.params.id),
         api.getBookmarks(this.props.params.id)
       ])
-      console.log(this.props.params.id, "params Id Board.js")
       .then(res => {
         this.setState({
           title: res[0].body.title,
@@ -37,8 +36,10 @@ export default class Board extends Component {
       .catch(console.error)
   }
 
-  goodbye(){
-    console.log("goodbye");
+  _createBookmarkForm = () =>{
+    this.setState({
+      createBookmark: true
+    })
   }
 
   render() {
@@ -54,11 +55,10 @@ export default class Board extends Component {
             url={b.url}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton addButtonClick={this.goodbye} /> : null} 
+        {auth.isLoggedIn() ? <AddButton addButtonClick={this._createBookmarkForm} /> : null}
+        {this.state.createBookmark ? <CreateBookmark boardId = {this.props.params.id} /> : null}
       </div>
     );
   }
 
 }
-
-
