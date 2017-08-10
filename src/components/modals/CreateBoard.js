@@ -14,13 +14,13 @@ export default class CreateBoard extends Component {
 
   handleInput = (e) => {
     e.preventDefault()
-    if (e.target.value.length <= 80){ //limits the length of input to 80
+    if (e.target.value.length <= 80){
       this.setState({
         inputValue:e.target.value
       })
     }
   }
-
+  
   _handleClick = (e) => {
     e.preventDefault()
       var fetchObj = {
@@ -40,6 +40,19 @@ export default class CreateBoard extends Component {
           this.setState({error:"error"})
         )
     }
+  // _handleClick = (e) => {
+  //   e.preventDefault()
+  //   this._fetchData()
+  //   }
+  //
+  // _fetchData = () =>{
+  //   console.log(this.props.id, "uuua")
+  //   api.createBoards(this.props.id)
+  //   .then(res => {
+  //     console.log(res)
+  //   })
+  //
+  // }
 
   render(){
     return (
