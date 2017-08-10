@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 // import auth from '../../auth'
 import './SignUp.css';
+import api from "../../api"
 import {API_HOST} from '../../config';
 
 
@@ -12,29 +13,19 @@ export default class SignUp extends Component {
     this.state = {};
   }
 
-  _handleSignup = () => {
-    this.setState({
-      email: this.refs.email.value,
-      password:this.refs.password.value
-    })
-
-    var fetchObj = {
-      method:'POST',
-      body: JSON.stringify({
-        email:this.state.email,
-        password:this.state.password
-      })
-    }
-
-    fetch(`${API_HOST}/auth/users`, fetchObj)
-      .then(res => {
-        if(this.state.email && this.state.password){
-          this.props.router.push('/login')
-        }
-      })//here if you wanted you could redirect the user to being signed in by doing '/'
-      .catch(
-        this.setState({error:"Please put in a username or password"})
-      )
+  _handleSignup = (e) => {
+    e.preventDefault(); console.log(this.refs.email.value);
+    api.requestSignup(this.refs.email.value, this.refs.password.value)
+    .then(res => {
+      console.log('signup ', res)
+      if(this.refs.email.value && this.refs.password.value){
+        this.props.router.push('/login')
+      }
+    })//here if you wanted you could redirect the user to being signed in by doing '/'
+    .catch(
+      this.setState({error:"Please put in a username or password"})
+    )
+    // *
   }
 
   render() {
