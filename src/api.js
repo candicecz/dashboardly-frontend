@@ -24,7 +24,7 @@ class Api {
     superagent
     .get(`${API_HOST}/boards/${id}`)
   )
-  
+
   getBookmarks = (boardId) => (
     superagent
     .get(`${API_HOST}/boards/${boardId}/bookmarks`)
