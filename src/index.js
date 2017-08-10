@@ -16,6 +16,7 @@ const routes = (
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
         <Route path="/boards/:id" component={Board}/>
+        <Route path="/boards" component={Board}/>
         <Route path="/signup" component={SignUp}/>
         <Route path="/login" component={Login}/>
         <Route path="/logout" component={Logout}/>
