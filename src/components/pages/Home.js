@@ -4,6 +4,7 @@ import BoardCard from '../elements/BoardCard';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
+import CreateBoard from '../modals/CreateBoard.js'
 
 
 export default class Home extends Component {
@@ -13,11 +14,12 @@ export default class Home extends Component {
       boards: []
     };
   }
-  
+
   componentDidMount() {
     this._fetchBoards();
   }
-  
+
+  //this is fetching all the boards on the homepage
   _fetchBoards = () => {
     api.getBoardsList()
     .then(res => {
@@ -26,11 +28,18 @@ export default class Home extends Component {
     .catch(console.error)
   }
 
+  _hello = () =>{
+    console.log('hello')
+    this.setState({
+      createBoard: true
+    })
+  }
+
   render() {
     let { boards } = this.state
     return (
       <div className="home">
-        { boards.map(b =>
+        { boards.map(b =>  //iterating over each board so that the following is displayed
           <BoardCard
             key={b.id}
             id={b.id}
@@ -39,7 +48,8 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton /> : null}
+        {auth.isLoggedIn() ? <AddButton addButtonClick={this._hello}  /> : null}
+        {this.state.createBoard ? <CreateBoard/> : ""}
       </div>
     );
   }
