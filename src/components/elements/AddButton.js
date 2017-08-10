@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import CreateBoard from '../modals/CreateBoard'
-import CreateBookmark from '../modals/CreateBookmark'
 
 export default class AddButton extends Component {
   constructor(props){

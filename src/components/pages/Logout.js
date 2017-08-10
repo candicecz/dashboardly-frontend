@@ -6,12 +6,13 @@ export default class Logout extends Component {
 
   componentDidMount() {
     auth.logout()
+    // this.props.router.push('/')
   }
 
   render() {
     return (
       <div>
-        <p>Logged Out! <Link to="/login">COMMMMEE BAAAACKK!!!</Link></p>
+        <p>Logged Out! <Link to="/login">log back in</Link></p>
       </div>
     )
   }

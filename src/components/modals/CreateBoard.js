@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './CreateBoard.css';
 import {API_HOST} from '../../config';
 import {browserHistory as history} from 'react-router';
-import api from '../../api';
+
 
 export default class CreateBoard extends Component {
   constructor(props) {

@@ -43,6 +43,7 @@ export default class Board extends Component {
   }
 
   render() {
+
     let { bookmarks } = this.state;
     if(!bookmarks) {
       return (
@@ -51,6 +52,7 @@ export default class Board extends Component {
         </div>
       )
     }
+
     return (
       <div className="board">
         { bookmarks.map(b =>
@@ -63,7 +65,7 @@ export default class Board extends Component {
           />
         )}
         {auth.isLoggedIn() ? <AddButton addButtonClick={this._createBookmarkForm} /> : null}
-        {this.state.createBookmark ? <CreateBookmark boardId = {this.props.params.id} /> : null}
+        {this.state.createBookmark ? <CreateBookmark boardId={this.props.params.id} /> : null}
       </div>
     );
   }
