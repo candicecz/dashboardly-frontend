@@ -1,6 +1,6 @@
 module.exports = {
 
-  API_HOST: "https://private-793ff-dashboardly.apiary-mock.com"
+  API_HOST: "https://d8445dbc.ngrok.io"
   // "https://private-anon-c3f982c0e0-dashboardly.apiary-mock.com"
 }
 // =======

@@ -12,30 +12,20 @@ export default class SignUp extends Component {
     this.state = {};
   }
 
-  _handleSignup = () => {
-    this.setState({
-      email: this.refs.email.value,
-      password:this.refs.password.value
-    })
-
-    var fetchObj = {
-      method:'POST',
-      body: JSON.stringify({
-        email:this.state.email,
-        password:this.state.password
-      })
-    }
-
-    fetch(`${API_HOST}/auth/users`, fetchObj)
+  _handleSignup = (e) => {
+      e.preventDefault();
+      api.requestSignup(this.refs.email.value, this.refs.password.value)
+      .then(data => data.json())
       .then(res => {
-        if(this.state.email && this.state.password){
+        console.log('signup ', res)
+        if(this.refs.email.value && this.refs.password.value){
           this.props.router.push('/login')
         }
-      })//here if you wanted you could redirect the user to being signed in by doing '/'
       .catch(
         this.setState({error:"Please put in a username or password"})
       )
-  }
+
+    }
 
   render() {
     return (
