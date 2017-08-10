@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './CreateBoard.css';
 import {API_HOST} from '../../config';
 import {browserHistory as history} from 'react-router';
-import api from '../../api';
+
 
 export default class CreateBoard extends Component {
   constructor(props) {
@@ -14,13 +14,13 @@ export default class CreateBoard extends Component {
 
   handleInput = (e) => {
     e.preventDefault()
-    if (e.target.value.length <= 80){ //limits the length of input to 80
+    if (e.target.value.length <= 80){
       this.setState({
         inputValue:e.target.value
       })
     }
   }
-
+  
   _handleClick = (e) => {
     e.preventDefault()
       var fetchObj = {
@@ -37,9 +37,22 @@ export default class CreateBoard extends Component {
             history.push(`/boards/${res.id}`)
         })
         .catch(
-          this.setState({error:"Please put in a username or password"})
+          this.setState({error:"error"})
         )
     }
+  // _handleClick = (e) => {
+  //   e.preventDefault()
+  //   this._fetchData()
+  //   }
+  //
+  // _fetchData = () =>{
+  //   console.log(this.props.id, "uuua")
+  //   api.createBoards(this.props.id)
+  //   .then(res => {
+  //     console.log(res)
+  //   })
+  //
+  // }
 
   render(){
     return (

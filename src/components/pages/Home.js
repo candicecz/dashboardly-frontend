@@ -28,8 +28,8 @@ export default class Home extends Component {
     .catch(console.error)
   }
 
-  _hello = () =>{
-    console.log('hello')
+//this sets the state for the the drop down new board form
+  _createBoardForm = () =>{
     this.setState({
       createBoard: true
     })
@@ -48,8 +48,8 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton addButtonClick={this._hello}  /> : null}
-        {this.state.createBoard ? <CreateBoard/> : ""}
+        {auth.isLoggedIn() ? <AddButton addButtonClick={this._createBoardForm}  /> : null}
+        {this.state.createBoard ? <CreateBoard id={boards[0].ownerId}/> : null}
       </div>
     );
   }
