@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './CreateBookmark.css';
-import BookmarkCard from '../elements/BookmarkCard'
 import api from '../../api';
-import {API_HOST} from '../../config';
 import {browserHistory as history} from 'react-router';
 
 export default class CreateBookmark extends Component {
