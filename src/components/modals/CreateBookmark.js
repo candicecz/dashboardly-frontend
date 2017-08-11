@@ -28,7 +28,8 @@ export default class CreateBookmark extends Component {
   }
 
   _fetchData = () => {
-    api.createBookmarks(this.props.boardId)
+    console.log("CBM 31"  , this.props);
+    api.createBookmarks(this.props.boardId, this.refs.url, this.refs.title, this.refs.description, localStorage.token)
     .then(res => {
       history.push(`/boards/${res.body.boardId}`)
     })
