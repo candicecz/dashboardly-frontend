@@ -45,9 +45,11 @@ class Api {
     .get(`${API_HOST}/boards/${boardId}/bookmarks`)
   )
 
-  createBookmarks = (boardId) => (
+  createBookmarks = (boardId, title, url , description , token) => (
     superagent
     .post(`${API_HOST}/boards/${boardId}/bookmarks`)
+    .set('Authorization', `token ${token}`)
+    .send({title,description,url})
   )
 
   getMe = (token) => (
