@@ -31,10 +31,10 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login">
-        <input type="text" ref="email"
+        <input placeholder="email" type="text" ref="email"
           onKeyUp={this._handleTyping}
         />
-        <input type="password" ref="password"
+        <input placeholder="password" type="password" ref="password"
           onKeyUp={this._handleTyping}
         />
         <button onClick={this._handleLogin}>login</button>

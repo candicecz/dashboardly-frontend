@@ -15,6 +15,7 @@ const routes = (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
+        <Route path="/boards" component={Home}/>
         <Route path="/boards/:id" component={Board}/>
         <Route path="/signup" component={SignUp}/>
         <Route path="/login" component={Login}/>

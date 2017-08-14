@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-// import auth from '../../auth'
 import './SignUp.css';
 import api from "../../api"
-import {API_HOST} from '../../config';
-
 
 // const ENTER = 13;
 
@@ -14,16 +11,15 @@ export default class SignUp extends Component {
   }
 
   _handleSignup = (e) => {
-    e.preventDefault(); console.log(this.refs.email.value);
+    e.preventDefault();
     api.requestSignup(this.refs.email.value, this.refs.password.value)
     .then(res => {
-      console.log('signup ', res)
       if(this.refs.email.value && this.refs.password.value){
         this.props.router.push('/login')
       }
     })//here if you wanted you could redirect the user to being signed in by doing '/'
     .catch(
-      this.setState({error:"Please put in a username or password"})
+      this.setState({error:"Please put in a valid email and password(minimum 12 characters)"})
     )
     //
   }
@@ -31,10 +27,10 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="signup">
-        <input type="text" ref="email"
+        <input placeholder="email" type="text" ref="email"
           onKeyUp={this._handleTyping}
         />
-        <input type="password" ref="password"
+        <input placeholder="password" type="password" ref="password"
           onKeyUp={this._handleTyping}
         />
         <button onClick={this._handleSignup}>Signup</button>

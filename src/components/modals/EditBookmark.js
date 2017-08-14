@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './CreateBookmark.css';
-import api from '../../api';
 import {browserHistory as history} from 'react-router';
+import api from '../../api';
 
-export default class CreateBookmark extends Component {
+export default class EditBookmark extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,32 +12,31 @@ export default class CreateBookmark extends Component {
   }
 
   _handleInput = (e) => {
-    //e.preventDefault()
-    if (e.target.value.length <= 80){
+    e.preventDefault()
       this.setState({
         inputValue:e.target.value
       })
-    }
   }
+
   _handleClick = (e) => {
-    //e.preventDefault()
     this._fetchData()
-  }
+    }
 
-
-  _fetchData = () => {
+  _fetchData = () =>{
     if(this.refs.title.value && this.refs.url.value){
-      api.createBookmarks(this.props.boardId, this.refs.title.value, this.refs.url.value, this.refs.description.value, localStorage.token)
+      api.editBookmarks(this.props.boardId, this.refs.title.value, this.refs.description.value, this.refs.url.value, localStorage.token)
       .then(res => {
-        history.createhref(this.ref.url.value)
+          history.push(`/boards/`)
       })
     }
     else {
-      console.error('missing bookmark title or url')
+      console.error("Must have a title url, and description")
+      this.setState({error:"Must have a title and description"})
     }
   }
 
-  render() {
+  render(){
+    console.log(this.props)
     return (
       <div>
         <form>
@@ -50,7 +49,6 @@ export default class CreateBookmark extends Component {
           <hr/>
           <button type="submit" onClick={(e) => this._handleClick(e)}>Create</button>
         </form>
-
       </div>
     );
   }
