@@ -21,7 +21,7 @@ export default class SignUp extends Component {
       if(this.refs.email.value && this.refs.password.value){
         this.props.router.push('/login')
       }
-    })//here if you wanted you could redirect the user to being signed in by doing '/'
+    })
     .catch(
       this.setState({error:"Please put in a username or password"})
     )
