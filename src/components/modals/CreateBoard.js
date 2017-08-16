@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './CreateBoard.css';
-import {API_HOST} from '../../config';
 import {browserHistory as history} from 'react-router';
-
+import api from '../../api';
 
 export default class CreateBoard extends Component {
   constructor(props) {
@@ -14,11 +13,9 @@ export default class CreateBoard extends Component {
 
   handleInput = (e) => {
     e.preventDefault()
-    if (e.target.value.length <= 80){
       this.setState({
         inputValue:e.target.value
       })
-    }
   }
 
   _handleClick = (e) => {
@@ -27,24 +24,29 @@ export default class CreateBoard extends Component {
     }
 
   _fetchData = () =>{
-    api.createBoards(this.refs.title.value,this.refs.description.value, localStorage.token)
-    .then(res => {
-      history.push(`/boards/${res.body[0].id}`)
-    })
-
+    if(this.refs.title.value && this.refs.description.value){
+      api.createBoards(this.refs.title.value,this.refs.description.value, localStorage.token)
+      .then(res => {
+        history.push(`/boards/${res.body[0].id}`)
+      })
+    }
+    else{
+      this.setState({error:"Please put in a title and description"})
+    }
   }
 
   render(){
     return (
       <div className="createNewBoard">
         <form>
-          Title: <input type="text" ref="title"/>
+          Title: <input type="text" maxLength="80" ref="title"/>
           <hr/>
-          Description: <input value={this.state.inputValue} type="text" ref="description" onInput={e => this.handleInput(e)}/>
+          Description: <input value={this.state.inputValue} maxLength="80" type="text" ref="description" onInput={e => this.handleInput(e)}/>
           {this.state.inputValue.length}/80
           <hr/>
           <button type="submit" onClick={(e) => this._handleClick(e)}>Create</button>
         </form>
+        <h3>{this.state.error}</h3>
       </div>
     );
   }

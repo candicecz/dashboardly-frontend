@@ -4,7 +4,8 @@ import BookmarkCard from '../elements/BookmarkCard';
 import auth from '../../auth';
 import './Board.css';
 import AddButton from '../elements/AddButton';
-import CreateBookmark from '../modals/CreateBookmark'
+import CreateBookmark from '../modals/CreateBookmark';
+
 
 export default class Board extends Component {
   constructor(props) {
@@ -43,7 +44,6 @@ export default class Board extends Component {
   }
 
   render() {
-
     let { bookmarks } = this.state;
     if(!bookmarks) {
       return (
@@ -55,10 +55,12 @@ export default class Board extends Component {
 
     return (
       <div className="board">
+        <h1>{this.state.title}'s Board</h1>
         { bookmarks.map(b =>
           <BookmarkCard
             key={b.id}
             id={b.id}
+            boardId={b.boardId}
             title={b.title}
             description={b.description}
             url={b.url}

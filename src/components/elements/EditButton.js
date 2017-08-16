@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import EditBoard from '../modals/EditBoard'
 
+import EditBoard from '../modals/EditBoard'
 
 export default class EditButton extends Component {
   constructor(props){
@@ -20,7 +20,7 @@ export default class EditButton extends Component {
   render(){
     return (
       <div className="add-button">
-        <button className="fa fa-plus fa-2x" onClick={this.props.addButtonClick}></button>
+        <button className="fa fa-plus fa-2x" onClick={this.props.editButtonClick}>Edit</button>
       </div>
     )
   }

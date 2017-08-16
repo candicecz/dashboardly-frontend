@@ -18,6 +18,7 @@ class Menu extends Component {
   _fetchData = () => {
     api.getMe(localStorage.token)
     .then(response => {
+    localStorage.user = response.body.users_id
      this.setState({
         image: response.body.avatarUrl
       })
